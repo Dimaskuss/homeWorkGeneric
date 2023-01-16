@@ -1,8 +1,8 @@
 public interface Competing {
 
-    void PitStop();
+    void pitStop();
 
-    void BestLapTime();
+    void bestLapTime();
 
-    void MaximumSpeed();
+    void maximumSpeed();
 }

@@ -35,10 +35,12 @@ public abstract class Transport<T extends Drivers> implements Competing {
                 '}';
     }
 
-    abstract public void Start();
+    abstract public void printType();
+
+    abstract public void start();
 
 
-    abstract public void Stop();
+    abstract public void stop();
 
     public String getBrand() {
         return brand;

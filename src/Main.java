@@ -17,32 +17,35 @@ public class Main {
         };
 
         Cars[] cars = {
-                new Cars("Audi", "TT", 3.0, driversBS[0]),
-                new Cars("Reno", "Capture", 2.8, driversBS[0]),
-                new Cars("Volvo", "CR90", 2.5, driversBS[0])
+                new Cars("Audi", "TT", 3.0, driversBS[0], Cars.BodyTypeCar.COUPE),
+                new Cars("Reno", "Capture", 2.8, driversBS[0], Cars.BodyTypeCar.CROSSOVER),
+                new Cars("Volvo", "CR90", 2.5, driversBS[0], null)
         };
         Buses[] buses = {
-                new Buses("Пазик", "ПЗ3", 1.7, driversDS[0]),
-                new Buses("Газель", "ГаЗ_2000", 3.3, driversDS[0]),
-                new Buses("Икарус", "Икар_1999", 0, driversDS[0])
+                new Buses("Пазик", "ПЗ3", 1.7, driversDS[0], Buses.BodyTypeBus.MIDDLE),
+                new Buses("Газель", "ГаЗ_2000", 3.3, driversDS[0], Buses.BodyTypeBus.VERY_HIGH),
+                new Buses("Икарус", "Икар_1999", 0, driversDS[0], Buses.BodyTypeBus.MIDDLE)
         };
 
         Trucks[] trucks = {
-                new Trucks("MAN", "19_84", 7.3, driversCS[0]),
-                new Trucks("Камаз", "Кам_3000", 6.5, kol9),
-                new Trucks("Volvo", "vol_2592", 8.3, driversCS[0])
+                new Trucks("MAN", "19_84", 7.3, driversCS[0], Trucks.BodyTypeTruck.N2),
+                new Trucks("Камаз", "Кам_3000", 6.5, kol9, Trucks.BodyTypeTruck.N3),
+                new Trucks("Volvo", "vol_2592", 8.3, driversCS[0], Trucks.BodyTypeTruck.N1)
         };
 
-        Trucks kamaz = new Trucks("Kama", "32", 3.9, kol9);
+        Trucks kamaz = new Trucks("Kama", "32", 3.9, kol9, Trucks.BodyTypeTruck.N3);
 
 
         System.out.println(driversBS[0].getName());
         System.out.println(cars[2].getEngine());
         cars[0].printInfo();
         kamaz.printInfo();
-        kamaz.PitStop();
+        kamaz.pitStop();
         printInfo(cars[0]);
-
+        System.out.println(Cars.BodyTypeCar.VAN.toString());
+        System.out.println(Trucks.BodyTypeTruck.N1.toString());
+        cars[2].printType();
+        kamaz.printType();
     }
 
     public static void printInfo(Transport<?> transport) {
