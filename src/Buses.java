@@ -17,6 +17,11 @@ public class Buses extends Transport<DriversD> {
     }
 
     @Override
+    public void getDiagnosed() {
+throw new IllegalArgumentException("данный тип транспорта диагностику проходить не может");
+    }
+
+    @Override
     public void printType() {
         if (getBodyTypeBus() == null) {
             System.out.println("Данных по транспортному средству недостаточно");

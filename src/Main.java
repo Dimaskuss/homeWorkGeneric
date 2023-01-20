@@ -1,18 +1,19 @@
 import Drivers.DriversB;
 import Drivers.DriversC;
 import Drivers.DriversD;
+import Drivers.LIcenceExeption;
 
 
 public class Main {
-    public static void main(String[] args) {
-        DriversC kol9 = new DriversC("kol9", false, 9);
+    public static void main(String[] args) throws LIcenceExeption {
+        DriversC kol9 = new DriversC("kol9", false, 9,'r');
 
-        DriversB[] driversBS = {new DriversB("Кот", true, 12)
+        DriversB[] driversBS = {new DriversB("Кот", true, 12,'h')
         };
-        DriversC[] driversCS = {new DriversC("Пёс", true, 12)
+        DriversC[] driversCS = {new DriversC("Пёс", true, 12,'n')
 
         };
-        DriversD[] driversDS = {new DriversD("Петуз", true, 12)
+        DriversD[] driversDS = {new DriversD("Петуз", true, 12,'g')
 
         };
 
@@ -26,11 +27,10 @@ public class Main {
                 new Buses("Газель", "ГаЗ_2000", 3.3, driversDS[0], Buses.BodyTypeBus.VERY_HIGH),
                 new Buses("Икарус", "Икар_1999", 0, driversDS[0], Buses.BodyTypeBus.MIDDLE)
         };
-
         Trucks[] trucks = {
                 new Trucks("MAN", "19_84", 7.3, driversCS[0], Trucks.BodyTypeTruck.N2),
                 new Trucks("Камаз", "Кам_3000", 6.5, kol9, Trucks.BodyTypeTruck.N3),
-                new Trucks("Volvo", "vol_2592", 8.3, driversCS[0], Trucks.BodyTypeTruck.N1)
+                new Trucks("Volvo", "vol_2592", 8.3, driversDS[0], Trucks.BodyTypeTruck.N1)
         };
 
         Trucks kamaz = new Trucks("Kama", "32", 3.9, kol9, Trucks.BodyTypeTruck.N3);
@@ -46,9 +46,14 @@ public class Main {
         System.out.println(Trucks.BodyTypeTruck.N1.toString());
         cars[2].printType();
         kamaz.printType();
+        trucks[0].getDiagnosed();
+//        buses[2].getDiagnosed();
+        driversCS[0].checkLicenceType();
+       driversBS[0].checkLicence();
     }
 
-    public static void printInfo(Transport<?> transport) {
+    public static void printInfo(Transport<?> transport) throws LIcenceExeption {
+        transport.getDriver().checkLicenceType();
         System.out.println("водитель " + transport.getDriver().getName() + " управляет автомобилем " + transport.getBrand() + " и будет участвовать в заезде");
         if (transport.getDriver().isLicense() != true) {
             System.out.println(transport.getBrand() + " никуда не едет , у водителя " + transport.getDriver().getName() + " нет прав ");

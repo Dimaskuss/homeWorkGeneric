@@ -34,6 +34,10 @@ public abstract class Transport<T extends Drivers> implements Competing {
                 ", engine=" + engine +
                 '}';
     }
+    abstract public void getDiagnosed();
+
+
+
 
     abstract public void printType();
 

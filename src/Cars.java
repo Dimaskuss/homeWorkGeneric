@@ -61,6 +61,11 @@ public class Cars extends Transport<DriversB> {
     }
 
     @Override
+    public void getDiagnosed() {
+        System.out.println(this.toString() + " этот автомобиль может проходить диагностику");
+    }
+
+    @Override
     public void printType() {
         if (getBodyTypeCar() == null) {
             System.out.println("Данных по транспортному средству недостаточно");

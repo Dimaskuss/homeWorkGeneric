@@ -1,11 +1,11 @@
 import Drivers.Drivers;
 import Drivers.DriversC;
 
-public class Trucks extends Transport<DriversC> {
+public class Trucks extends Transport<Drivers> {
     BodyTypeTruck bodyTypeTruck;
 
-    public Trucks(String brand, String model, double engine, DriversC driversC, BodyTypeTruck bodyTypeTruck) {
-        super(brand, model, engine, driversC);
+    public Trucks(String brand, String model, double engine, Drivers drivers, BodyTypeTruck bodyTypeTruck) {
+        super(brand, model, engine, drivers);
         this.bodyTypeTruck = bodyTypeTruck;
 
     }
@@ -57,6 +57,11 @@ public class Trucks extends Transport<DriversC> {
         }
     }
 
+
+    @Override
+    public void getDiagnosed() {
+        System.out.println(this.toString() + " могут проходить диагностику");
+    }
 
     @Override
     public void printType() {

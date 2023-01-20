@@ -1,8 +1,15 @@
 package Drivers;
 
 public class DriversD extends Drivers {
-    public DriversD(String name, boolean license, int experience) {
-        super(name, license, experience);
+    public DriversD(String name, boolean license, int experience, char licenceType) {
+        super(name, license, experience, licenceType);
+    }
+
+    @Override
+    public void checkLicence() throws LIcenceExeption {
+        if (getLicenceType() != 'd' && getLicenceType() != 'D') {
+            throw new LIcenceExeption("неправильная лицензия");
+        }
     }
 
     @Override

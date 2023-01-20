@@ -5,9 +5,16 @@ import com.sun.jdi.connect.Transport;
 public class DriversC extends Drivers {
 
 
-    public DriversC(String name, boolean license, int experience) {
-        super(name, license, experience);
 
+    public DriversC(String name, boolean license, int experience, char licenceType) {
+        super(name, license, experience, licenceType);
+    }
+
+    @Override
+    public void checkLicence() throws LIcenceExeption {
+        if (getLicenceType() != 'c' && getLicenceType() != 'C') {
+            throw new LIcenceExeption("неправильная лицензия");
+        }
     }
 
     public void driveCar() {

@@ -6,13 +6,32 @@ public abstract class Drivers {
     private String name;
     private boolean license;
     private int experience;
+     private char licenceType;
 
-    public Drivers(String name, boolean license, int experience) {
+    public char getLicenceType() {
+        return licenceType;
+    }
+
+    public void setLicenceType(char licenceType) {
+        this.licenceType = licenceType;
+    }
+
+    public Drivers(String name, boolean license, int experience, char licenceType) {
         this.name = name;
         this.license = license;
         this.experience = experience;
+        this.licenceType= licenceType;
     }
+   public abstract void checkLicence() throws LIcenceExeption;
+    public void checkLicenceType() throws LIcenceExeption {
+        try {
+            checkLicence();
+        } catch (LIcenceExeption e) {
+            System.out.println("не правильный тип лицензии, пожалуйста введите корректный тип лицензии для данного гонщика");
 
+
+        }
+    }
     public abstract void startDrive();
 
     public abstract void stopDrive();
