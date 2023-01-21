@@ -23,7 +23,7 @@ public abstract class Drivers {
         this.licenceType= licenceType;
     }
    public abstract void checkLicence() throws LIcenceExeption;
-    public void checkLicenceType() throws LIcenceExeption {
+    public void checkLicenceType() {
         try {
             checkLicence();
         } catch (LIcenceExeption e) {

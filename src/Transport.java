@@ -1,10 +1,15 @@
 import Drivers.Drivers;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public abstract class Transport<T extends Drivers> implements Competing {
     private String brand;
     private String model;
     private double engine;
     private T driver;
+    private List<Mechanic> mechanics = new ArrayList<>();
 
 
     public Transport(String brand, String model, double engine, T driver) {
@@ -26,6 +31,16 @@ public abstract class Transport<T extends Drivers> implements Competing {
         this.driver = driver;
     }
 
+    public void addMechanics(Mechanic<Transport>... mechanics) {
+        this.mechanics.addAll(Arrays.asList(mechanics));
+    }
+
+    public void getAllMechanics() {
+        for (Mechanic mechanic : mechanics) {
+            System.out.println(mechanic.getName());
+        }
+    }
+
     @Override
     public String toString() {
         return "Transport{" +
@@ -34,9 +49,8 @@ public abstract class Transport<T extends Drivers> implements Competing {
                 ", engine=" + engine +
                 '}';
     }
+
     abstract public void getDiagnosed();
-
-
 
 
     abstract public void printType();
@@ -46,7 +60,7 @@ public abstract class Transport<T extends Drivers> implements Competing {
 
     abstract public void stop();
 
-    public String getBrand() {
+    public  String getBrand() {
         return brand;
     }
 
