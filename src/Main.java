@@ -1,10 +1,14 @@
 import Drivers.*;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 public class Main {
+
+
     public static void main(String[] args) throws LIcenceExeption {
 
 
@@ -35,7 +39,7 @@ public class Main {
                 new Trucks("Volvo", "vol_2592", 8.3, driversDS[0], Trucks.BodyTypeTruck.N1)
         };
 
-//        Trucks kamaz = new Trucks("Kama", "32", 3.9, kol9, Trucks.BodyTypeTruck.N3);
+        Trucks kamaz = new Trucks("Kama", "32", 3.9, kol9, Trucks.BodyTypeTruck.N3);
 
         Mechanic misha = new Mechanic("Михаил", "Пичинятор");
         Mechanic leha = new Mechanic("Алексей", "Пичинятор");
@@ -43,15 +47,6 @@ public class Main {
         Mechanic vlad = new Mechanic("Владимир", "Пичинятор");
         Mechanic yar = new Mechanic("Ярослав", "Пичинятор");
 
-        cars[0].addMechanics(leha, misha, sasha);
-        cars[1].addMechanics(leha, misha, yar);
-        cars[2].addMechanics(sasha, vlad, yar);
-        trucks[0].addMechanics(leha, misha, sasha);
-        trucks[1].addMechanics(sasha, vlad, yar);
-        trucks[2].addMechanics(leha, misha, yar);
-        buses[0].addMechanics(leha, misha, sasha);
-        buses[1].addMechanics(leha, vlad, yar);
-        buses[2].addMechanics(sasha, vlad, yar);
 
         List<Transport> participant = new ArrayList<>();
         participant.add(cars[0]);
@@ -70,14 +65,33 @@ public class Main {
         drivers.add(driversBS[0]);
         drivers.add(driversDS[0]);
         drivers.add(kol9);
+// мапа
+        Map<Transport<?>, Mechanic<?>> transportMechanicHashMap = new HashMap<>();
+        transportMechanicHashMap.put(cars[0], misha);
+        transportMechanicHashMap.put(buses[0], misha);
+        transportMechanicHashMap.put(cars[0], yar);
+        transportMechanicHashMap.put(cars[0], vlad);
+        transportMechanicHashMap.put(cars[2], vlad);
 
+        System.out.println(transportMechanicHashMap);
+//
+
+        cars[0].addMechanics(leha, misha, sasha);
+        cars[1].addMechanics(leha, misha, yar);
+        cars[2].addMechanics(sasha, vlad, yar);
+        trucks[0].addMechanics(leha, misha, sasha);
+        trucks[1].addMechanics(sasha, vlad, yar, yar, yar);
+        trucks[2].addMechanics(leha, misha, yar);
+        buses[0].addMechanics(leha, misha, sasha);
+        buses[1].addMechanics(leha, vlad, yar);
+        buses[2].addMechanics(sasha, vlad, yar);
 
         System.out.println(participant.size());
+
         for (Transport transport : participant) {
             serviseInfo(transport);
 
         }
-
 //
 //        misha.maintenance(trucks[1]);
 //        serviseInfo(cars[1]);
@@ -98,11 +112,11 @@ public class Main {
 //        buses[2].getDiagnosed();
 //        driversCS[0].checkLicenceType();
 //       driversBS[0].checkLicence();
-serviseInfo(participant.get(3));
+//serviseInfo(participant.get(3));
     }
 
     public static void serviseInfo(Transport<?> transport) {
-        System.out.println( transport.getModel()+ " " + transport.getBrand() + " транспортное средство с водителем по имени " + transport.getDriver().getName() + " имеет механиков :");
+        System.out.println(transport.getModel() + " " + transport.getBrand() + " транспортное средство с водителем по имени " + transport.getDriver().getName() + " имеет механиков :");
         transport.getAllMechanics();
     }
 

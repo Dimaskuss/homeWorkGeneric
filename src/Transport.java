@@ -1,15 +1,13 @@
 import Drivers.Drivers;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public abstract class Transport<T extends Drivers> implements Competing {
     private String brand;
     private String model;
     private double engine;
     private T driver;
-    private List<Mechanic> mechanics = new ArrayList<>();
+    public final Set<Mechanic<?>> mechanics = new HashSet<>();
 
 
     public Transport(String brand, String model, double engine, T driver) {
@@ -31,14 +29,28 @@ public abstract class Transport<T extends Drivers> implements Competing {
         this.driver = driver;
     }
 
-    public void addMechanics(Mechanic<Transport>... mechanics) {
+    public void addMechanics(Mechanic<Transport<?>>... mechanics) {
         this.mechanics.addAll(Arrays.asList(mechanics));
     }
 
     public void getAllMechanics() {
-        for (Mechanic mechanic : mechanics) {
+        for (Mechanic<?> mechanic : mechanics) {
             System.out.println(mechanic.getName());
         }
+    }
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Transport<?> transport = (Transport<?>) o;
+        return Double.compare(transport.engine, engine) == 0 && Objects.equals(brand, transport.brand) && Objects.equals(model, transport.model) && Objects.equals(driver, transport.driver) && Objects.equals(mechanics, transport.mechanics);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(brand, model, engine, driver, mechanics);
     }
 
     @Override
@@ -60,7 +72,7 @@ public abstract class Transport<T extends Drivers> implements Competing {
 
     abstract public void stop();
 
-    public  String getBrand() {
+    public String getBrand() {
         return brand;
     }
 
