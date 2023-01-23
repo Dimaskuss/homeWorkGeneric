@@ -71,6 +71,14 @@ public class Main {
             System.out.println(drivers);
 
         }
+
+        System.out.println();
+
+        Iterator<Drivers> iter = driversSet.iterator();
+        while (iter.hasNext()) {
+            Drivers drivers = iter.next();
+            System.out.println(drivers);
+        }
 //
         List<Drivers> drivers = new ArrayList<>();
         drivers.add(driversCS[0]);
