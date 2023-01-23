@@ -1,9 +1,6 @@
 import Drivers.*;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 
 public class Main {
@@ -60,6 +57,21 @@ public class Main {
         participant.add(buses[2]);
 
 
+
+//
+        Set<Drivers> driversSet = new HashSet<>();
+        driversSet.add(driversDS[0]);
+        driversSet.add(driversBS[0]);
+        driversSet.add(driversCS[0]);
+        driversSet.add(driversCS[0]);
+        driversSet.add(driversCS[0]);
+        driversSet.add(kol9);
+
+        for (Drivers drivers : driversSet) {
+            System.out.println(drivers);
+
+        }
+//
         List<Drivers> drivers = new ArrayList<>();
         drivers.add(driversCS[0]);
         drivers.add(driversBS[0]);
@@ -73,7 +85,7 @@ public class Main {
         transportMechanicHashMap.put(cars[0], vlad);
         transportMechanicHashMap.put(cars[2], vlad);
 
-        System.out.println(transportMechanicHashMap);
+//        System.out.println(transportMechanicHashMap);
 //
 
         cars[0].addMechanics(leha, misha, sasha);
@@ -86,12 +98,14 @@ public class Main {
         buses[1].addMechanics(leha, vlad, yar);
         buses[2].addMechanics(sasha, vlad, yar);
 
-        System.out.println(participant.size());
+//        System.out.println(participant.size());
+//
+//        for (Transport transport : participant) {
+//            serviseInfo(transport);
+//
+//        }
 
-        for (Transport transport : participant) {
-            serviseInfo(transport);
 
-        }
 //
 //        misha.maintenance(trucks[1]);
 //        serviseInfo(cars[1]);
