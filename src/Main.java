@@ -16,14 +16,17 @@ public class Main {
         DriversC[] driversCS = {new DriversC("Пёс", true, 12, 'n')
 
         };
-        DriversD[] driversDS = {new DriversD("Петуз", true, 12, 'g')
+        DriversD[] driversDS = {new DriversD("Петуз", true, 12, 'g'),
+                new DriversD("Петуз", true, 12, 'g')
+
 
         };
 
         Cars[] cars = {
                 new Cars("Audi", "TT", 3.0, driversBS[0], Cars.BodyTypeCar.COUPE),
                 new Cars("Reno", "Capture", 2.8, driversBS[0], Cars.BodyTypeCar.CROSSOVER),
-                new Cars("Volvo", "CR90", 2.5, driversBS[0], null)
+                new Cars("Volvo", "CR90", 2.5, driversBS[0], null),
+                new Cars("Audi", "TT", 3.0, driversBS[0], Cars.BodyTypeCar.COUPE)
         };
         Buses[] buses = {
                 new Buses("Пазик", "ПЗ3", 1.7, driversDS[0], Buses.BodyTypeBus.MIDDLE),
@@ -43,6 +46,7 @@ public class Main {
         Mechanic sasha = new Mechanic("Александр", "Пичинятор");
         Mechanic vlad = new Mechanic("Владимир", "Пичинятор");
         Mechanic yar = new Mechanic("Ярослав", "Пичинятор");
+        Mechanic yar1 = new Mechanic("Ярослав", "Пичинятор");
 
 
         List<Transport> participant = new ArrayList<>();
@@ -57,7 +61,6 @@ public class Main {
         participant.add(buses[2]);
 
 
-
 //
         Set<Drivers> driversSet = new HashSet<>();
         driversSet.add(driversDS[0]);
@@ -66,6 +69,7 @@ public class Main {
         driversSet.add(driversCS[0]);
         driversSet.add(driversCS[0]);
         driversSet.add(kol9);
+        driversSet.add(driversDS[1]);
 
         for (Drivers drivers : driversSet) {
             System.out.println(drivers);
@@ -87,13 +91,14 @@ public class Main {
         drivers.add(kol9);
 // мапа
         Map<Transport<?>, Mechanic<?>> transportMechanicHashMap = new HashMap<>();
-        transportMechanicHashMap.put(cars[0], misha);
-        transportMechanicHashMap.put(buses[0], misha);
-        transportMechanicHashMap.put(cars[0], yar);
-        transportMechanicHashMap.put(cars[0], vlad);
-        transportMechanicHashMap.put(cars[2], vlad);
 
-//        System.out.println(transportMechanicHashMap);
+        transportMechanicHashMap.put(buses[0], misha);
+        transportMechanicHashMap.put(cars[2], vlad);
+        transportMechanicHashMap.put(cars[3], yar1);
+        transportMechanicHashMap.put(buses[2], misha);
+        transportMechanicHashMap.put(cars[0], yar);
+
+        System.out.println(transportMechanicHashMap);
 //
 
         cars[0].addMechanics(leha, misha, sasha);

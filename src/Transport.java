@@ -7,7 +7,7 @@ public abstract class Transport<T extends Drivers> implements Competing {
     private String model;
     private double engine;
     private T driver;
-    public final Set<Mechanic<?>> mechanics = new HashSet<>();
+    private final Set<Mechanic<?>> mechanics = new HashSet<>();
 
 
     public Transport(String brand, String model, double engine, T driver) {

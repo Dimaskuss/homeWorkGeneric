@@ -2,11 +2,16 @@ package Drivers;
 
 import com.sun.jdi.connect.Transport;
 
+import java.util.HashSet;
+import java.util.Objects;
+import java.util.Set;
+
 public abstract class Drivers {
     private String name;
     private boolean license;
     private int experience;
-     private char licenceType;
+    private char licenceType;
+
 
     public char getLicenceType() {
         return licenceType;
@@ -20,9 +25,11 @@ public abstract class Drivers {
         this.name = name;
         this.license = license;
         this.experience = experience;
-        this.licenceType= licenceType;
+        this.licenceType = licenceType;
     }
-   public abstract void checkLicence() throws LIcenceExeption;
+
+    public abstract void checkLicence() throws LIcenceExeption;
+
     public void checkLicenceType() {
         try {
             checkLicence();
@@ -32,6 +39,7 @@ public abstract class Drivers {
 
         }
     }
+
     public abstract void startDrive();
 
     public abstract void stopDrive();
@@ -69,5 +77,18 @@ public abstract class Drivers {
 
     public void setExperience(int experience) {
         this.experience = experience;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Drivers drivers = (Drivers) o;
+        return license == drivers.license && experience == drivers.experience && licenceType == drivers.licenceType && Objects.equals(name, drivers.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, license, experience, licenceType);
     }
 }
